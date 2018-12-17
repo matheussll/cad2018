@@ -22,17 +22,18 @@ def prim(vertices, graph):
 
   while len(MST) != vertices-1:
     visited.append(vertex)
+
     for r in range(0, vertices):
       if adjMatrix[vertex][r] != 0:
-        edges.append([vertex,r,adjMatrix[vertex][r]])
+        edges.append([vertex,r,adjMatrix[vertex][r]]) # cria uma entrada em edges [inicio, fim, custo]
 
     for e in range(0, len(edges)):
-      if edges[e][2] < minEdge[2] and edges[e][1] not in visited:
+      if edges[e][2] < minEdge[2] and edges[e][1] not in visited: # encontra o menor caminho na lista de edges
         minEdge = edges[e]
 
     edges.remove(minEdge)
 
-    MST.append(minEdge)
+    MST.append(minEdge) # adiciona na mst o menor caminho
 
     vertex = minEdge[1]
     minEdge = [None,None,infinity]
